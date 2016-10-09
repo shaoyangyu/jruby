@@ -12,8 +12,9 @@ package org.jruby.truffle.core.time;
 import com.oracle.truffle.api.object.DynamicObject;
 import com.oracle.truffle.api.object.DynamicObjectFactory;
 import com.oracle.truffle.api.object.dsl.Layout;
-import org.joda.time.DateTime;
 import org.jruby.truffle.core.basicobject.BasicObjectLayout;
+
+import java.time.ZonedDateTime;
 
 @Layout
 public interface TimeLayout extends BasicObjectLayout {
@@ -22,8 +23,7 @@ public interface TimeLayout extends BasicObjectLayout {
                                          DynamicObject metaClass);
 
     DynamicObject createTime(DynamicObjectFactory factory,
-                             DateTime dateTime,
-                             long nSec,
+                             ZonedDateTime dateTime,
                              Object zone,
                              Object offset,
                              boolean relativeOffset,
@@ -31,11 +31,8 @@ public interface TimeLayout extends BasicObjectLayout {
 
     boolean isTime(DynamicObject object);
 
-    DateTime getDateTime(DynamicObject object);
-    void setDateTime(DynamicObject object, DateTime value);
-
-    long getNSec(DynamicObject object);
-    void setNSec(DynamicObject object, long value);
+    ZonedDateTime getDateTime(DynamicObject object);
+    void setDateTime(DynamicObject object, ZonedDateTime value);
 
     Object getOffset(DynamicObject object);
     void setOffset(DynamicObject object, Object value);
