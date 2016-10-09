@@ -434,6 +434,6 @@ public class JNRTrufflePosix implements TrufflePosix {
 
     @Override
     public long[] getgroups() {
-        return Platform.getPlatform().getGroups(null);
+        return posix.getgroups();
     }
 }
